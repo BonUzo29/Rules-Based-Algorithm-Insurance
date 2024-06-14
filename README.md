@@ -2,6 +2,7 @@
 
 #### Script to generate our synthetic dataset
 
+
 ```
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import rand, randn, round, when, monotonically_increasing_id
@@ -44,7 +45,8 @@ spark.stop()
 ```
 
 
-#### The Dataset (input_data.csv)
+#### The Synthethic dataset that was generated from the script was called 'input_data.csv'. and a snippet of it looks this way.
+
 
     id	claim_amount	provider_type	patient_age	claim_type	procedure_complexity	diagnosis_code	treatment_cost	service_duration	out_of_network
     60129542144	3038.66	Clinic	51	Outpatient	Medium	B002	493.09	9	Yes
