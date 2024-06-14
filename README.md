@@ -5,7 +5,42 @@
 
 ![HIGH-LEVEL DIAGRAM BON](https://github.com/BonUzo29/Rules-Based-Algorithm-Insurance/assets/131703145/99eed556-1eaf-489c-bc39-c0884c02bca9)
 
+<b>DIAGRAM EXPLANATION:</b>
 
+- Docker Environment:
+     The diagram starts with the Docker environment hosting Spark. <br>
+     Within Docker, there are containers set up to act as Spark Master and Spark Worker nodes.
+
+- Spark Master and Worker:
+     Spark Master coordinates the Spark jobs.<br>
+     Spark Worker executes the tasks assigned by Spark Master.
+
+- Data Processing:
+     input_data.csv is processed within the Spark environment.<br>
+     Spark reads and manipulates the data using distributed computing capabilities.
+
+- Define Rules as UDFs:
+     User Defined Functions (UDFs) are defined within the Python environment running on Spark.<br>
+     These functions implement rules for labeling healthcare claims based on various criteria.
+
+- Apply UDFs to Data:
+     The defined UDFs are applied to each row of the healthcare claims data.<br>
+     This step evaluates the conditions set by the rules to determine labels (Fraudulent, Suspicious, Legitimate).
+
+- Generate Labels:
+     Based on the evaluation of rules, labels are generated for each claim.<br>
+
+- Select Relevant Columns for Output:
+     Only relevant columns from the original data and generated labels are selected.<br>
+
+- Write labeled_data to labeled_data.csv:
+     The processed and labeled data is written to labeled_data.csv within the Docker environment.<br>
+
+This architectural diagram outlines the flow of data and operations within a Dockerized Spark environment, illustrating how Docker manages the execution of Spark jobs and data processing tasks for healthcare claims labeling.
+
+<br>
+<b>DESCRIPTION OF SCRIPT 1</b>b>
+   
 This script uses PySpark to generate synthetic healthcare claims data. It initializes a Spark session, generates random values for various columns (such as claim amount, provider type, patient age, claim type, etc.), assigns a unique identifier to each row, writes the generated data to a CSV file (input_data.csv), and then stops the Spark session.
 
 <b>Purpose:</b> This script generates synthetic healthcare claims data using PySpark.
