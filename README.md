@@ -98,13 +98,13 @@ This script uses PySpark to label healthcare claims data based on predefined rul
 <b>Purpose:</b> This script labels healthcare claims data based on defined rules using PySpark.
 Steps:
 
- Spark Session Initialization: Starts a Spark session named `"Healthcare Claims Labeling"`.
- Data Loading: Reads the input CSV (input_data.csv) containing healthcare claims data into a Spark DataFrame (data).
- Rules Definition: Defines two rules as Python functions (`rule_is_high_claim_amount` and `rule_is_hospital_inpatient`) that evaluate conditions based on columns (`claim_amount`, `provider_type`, and `claim_type`).
- UDFs: Converts Python functions into User Defined Functions (`udf_high_claim_amount` and `udf_hospital_inpatient`) that can be applied to Spark DataFrames.
- Applying Rules: Creates new columns (`Label1`, `Label2`, and `Final_Label`) based on the application of rules using `withColumn()` and `when()` conditions.
- Output: Writes the labeled healthcare claims data (`final_data`) to a CSV file (`labeled_data.csv`) with headers and overwrites if the file already exists.
- Session Termination: Stops the Spark session to release resources.
+- Spark Session Initialization: Starts a Spark session named `"Healthcare Claims Labeling"`.
+-  Data Loading: Reads the input CSV (input_data.csv) containing healthcare claims data into a Spark DataFrame (data).
+- Rules Definition: Defines two rules as Python functions (`rule_is_high_claim_amount` and `rule_is_hospital_inpatient`) that evaluate conditions based on columns (`claim_amount`, `provider_type`, and `claim_type`).
+- UDFs: Converts Python functions into User Defined Functions (`udf_high_claim_amount` and `udf_hospital_inpatient`) that can be applied to Spark DataFrames.
+- Applying Rules: Creates new columns (`Label1`, `Label2`, and `Final_Label`) based on the application of rules using `withColumn()` and `when()` conditions.
+- Output: Writes the labeled healthcare claims data (`final_data`) to a CSV file (`labeled_data.csv`) with headers and overwrites if the file already exists.
+- Session Termination: Stops the Spark session to release resources.
 
 
 ```
