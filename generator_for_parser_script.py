@@ -5,6 +5,9 @@ from pyspark.sql.functions import rand, randn, round, when, monotonically_increa
 spark = SparkSession.builder \
     .appName("Generate Healthcare Claims Data") \
     .getOrCreate()
+    
+# Set log level to OFF
+spark.sparkContext.setLogLevel("OFF")
 
 # Number of rows to generate
 num_rows = 10000
