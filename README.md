@@ -93,6 +93,8 @@ spark.stop()
 ## SCRIPT 2
 #### SCRIPT FOR APPLYING RULES-BASED ALGORITHM (also uploaded to the repo section as python file)
 
+This script uses PySpark to label healthcare claims data based on predefined rules. It starts a Spark session, reads the generated healthcare claims data from input_data.csv, defines rules as Python functions (e.g., identifying high claim amounts as fraudulent, flagging certain provider types and claim types as suspicious or legitimate), converts these rules into User Defined Functions (UDFs), applies these UDFs to the data to create labels (Label1, Label2, and Final_Label), selects relevant columns for the final output, writes the labeled data to a new CSV file (labeled_data.csv), and stops the Spark session.
+
 ```
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf, when, col
