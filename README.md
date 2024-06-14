@@ -191,9 +191,48 @@ Below: Simple tree diagram depicting the levels of rules used to generate labels
     └────────────────────────────┘     └─────────────────────┘
 
 ```
+Explanation of the Tree Diagram
 
+Input Data: The process starts with input data from input_data.csv.
 
-This script uses PySpark to label healthcare claims data based on predefined rules. It starts a Spark session, reads the generated healthcare claims data from input_data.csv, defines rules as Python functions (e.g., identifying high claim amounts as fraudulent, flagging certain provider types and claim types as suspicious or legitimate), converts these rules into User Defined Functions (UDFs), applies these UDFs to the data to create labels (Label1, Label2, and Final_Label), selects relevant columns for the final output, writes the labeled data to a new CSV file (labeled_data.csv), and stops the Spark session.
+- Rule 1: Claim Amount Check:
+   Checks if the claim amount is greater than the approved amount. If so, the claim is labeled as 'Fraudulent'.
+   If not, further checks are needed.
+
+- Rule 2: Provider Type Check:
+   Checks if the provider type is 'Hospital'. If so, the claim is labeled as 'Suspicious'.
+   If not, further checks are needed.
+
+- Rule 3: Patient Age Check:
+   Checks if the patient age is greater than 100. If so, the claim is labeled as 'Fraudulent'.
+   If not, further checks are needed.
+
+- Rule 4: Claim Type Check:
+   Checks the claim type (Inpatient/Outpatient) for further evaluation.
+
+- Rule 5: Procedure Check:
+   Checks if the procedure is valid.
+
+- Rule 6: Diagnosis Code Check:
+   Checks if the diagnosis code is valid.
+
+- Rule 7: Treatment Cost Check:
+   Checks if the treatment cost is above a certain threshold.
+
+- Rule 8: Service Duration Check:
+   Checks if the service duration is reasonable.
+
+- Rule 9: Out of Network Check:
+   Checks if the provider is out of network (Yes/No).
+
+- Rule 10: Final Check:
+   Assigns the final label based on the cumulative evaluation of all rules.
+
+This process ensures a thorough evaluation of each claim based on multiple rules, assigning a label of 'Fraudulent', 'Suspicious', or 'Legitimate' accordingly.
+
+<br>
+
+This script 2 uses PySpark to label healthcare claims data based on predefined rules. It starts a Spark session, reads the generated healthcare claims data from input_data.csv, defines rules as Python functions (e.g., identifying high claim amounts as fraudulent, flagging certain provider types and claim types as suspicious or legitimate), converts these rules into User Defined Functions (UDFs), applies these UDFs to the data to create labels (Label1, Label2, and Final_Label), selects relevant columns for the final output, writes the labeled data to a new CSV file (labeled_data.csv), and stops the Spark session.
 
 <b>Purpose:</b> This script labels healthcare claims data based on defined rules using PySpark.
 Steps:
