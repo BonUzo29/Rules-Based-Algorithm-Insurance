@@ -95,6 +95,18 @@ spark.stop()
 
 This script uses PySpark to label healthcare claims data based on predefined rules. It starts a Spark session, reads the generated healthcare claims data from input_data.csv, defines rules as Python functions (e.g., identifying high claim amounts as fraudulent, flagging certain provider types and claim types as suspicious or legitimate), converts these rules into User Defined Functions (UDFs), applies these UDFs to the data to create labels (Label1, Label2, and Final_Label), selects relevant columns for the final output, writes the labeled data to a new CSV file (labeled_data.csv), and stops the Spark session.
 
+<b>Purpose:</b> This script labels healthcare claims data based on defined rules using PySpark.
+Steps:
+
+ Spark Session Initialization: Starts a Spark session named `"Healthcare Claims Labeling"`.
+ Data Loading: Reads the input CSV (input_data.csv) containing healthcare claims data into a Spark DataFrame (data).
+ Rules Definition: Defines two rules as Python functions (`rule_is_high_claim_amount` and `rule_is_hospital_inpatient`) that evaluate conditions based on columns (`claim_amount`, `provider_type`, and `claim_type`).
+ UDFs: Converts Python functions into User Defined Functions (`udf_high_claim_amount` and `udf_hospital_inpatient`) that can be applied to Spark DataFrames.
+ Applying Rules: Creates new columns (`Label1`, `Label2`, and `Final_Label`) based on the application of rules using `withColumn()` and `when()` conditions.
+ Output: Writes the labeled healthcare claims data (`final_data`) to a CSV file (`labeled_data.csv`) with headers and overwrites if the file already exists.
+ Session Termination: Stops the Spark session to release resources.
+
+
 ```
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf, when, col
