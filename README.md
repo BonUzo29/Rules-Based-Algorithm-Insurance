@@ -1,6 +1,8 @@
 # Rules-Based-Algorithm-Insurance
 
 
+#### The Dataset (input_data.csv)
+
     id	claim_amount	provider_type	patient_age	claim_type	procedure_complexity	diagnosis_code	treatment_cost	service_duration	out_of_network
     60129542144	3038.66	Clinic	51	Outpatient	Medium	B002	493.09	9	Yes
     60129542145	8541.1	Hospital	37	Inpatient	Low	A001	1056.93	8	No
