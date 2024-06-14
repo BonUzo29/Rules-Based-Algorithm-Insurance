@@ -89,6 +89,7 @@ spark.stop()
 
 
 <br>
+
 ## SCRIPT 2
 #### SCRIPT FOR APPLYING RULES-BASED ALGORITHM (also uploaded to the repo section as python file)
 
