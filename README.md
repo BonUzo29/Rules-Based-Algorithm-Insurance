@@ -1,7 +1,32 @@
 # Rules-Based-Algorithm-Insurance
 
-#### This was the Script to generate our synthetic dataset called 'generator_for_parser_script.py'
+## SCRIPT 1
+#### This was the Script to generate our synthetic dataset called 'generator_for_parser_script.py'.
 
+This script uses PySpark to generate synthetic healthcare claims data. It initializes a Spark session, generates random values for various columns (such as claim amount, provider type, patient age, claim type, etc.), assigns a unique identifier to each row, writes the generated data to a CSV file (input_data.csv), and then stops the Spark session.
+
+<b>Purpose:</b> This script generates synthetic healthcare claims data using PySpark.
+Steps:
+
+1. Spark Session Initialization: Initiates a Spark session named `"Generate Healthcare Claims Data"`.
+   
+2. Data Generation: Generates random data for each column based on specified distributions and conditions.
+      -  `claim_amount`: Randomly generated claim amounts rounded to two decimal places.
+      -  `provider_type`: Categorical column with values `'Hospital'`, `'Clinic'`, or `'Pharmacy'` based on random probabilities.
+      -  `patient_age`: Random integer ages centered around 40 with a standard deviation of 10.
+      -  `claim_type`: Categorical column with values `'Inpatient'` or `'Outpatient'` based on a 50/50 probability.
+      -  `procedure_complexity`: Categorical column with values `'Low'`, 'Medium', or `'High'` based on random probabilities.
+      -  `diagnosis_code`: Categorical column with values `'A001'` or `'B002'` based on a 50/50 probability.
+      -  `treatment_cost`: Randomly generated treatment costs rounded to two decimal places.
+      -  `service_duration`: Random integer service durations.
+      -  `out_of_network`: Categorical column with values `'Yes'` or `'No'` based on a 50/50 probability.
+      -  `id`: Unique identifier column generated using `monotonically_increasing_id()`.
+        
+3. Output: Writes the generated synthetic data to a CSV file (input_data.csv) with headers and overwrites if the file already exists.
+   
+4. Session Termination: Stops the Spark session to release resources.
+
+<br>
 
 ```
 from pyspark.sql import SparkSession
@@ -44,6 +69,7 @@ spark.stop()
 
 ```
 
+<br>
 
 #### The Synthethic dataset that was generated from the script was called 'input_data.csv'. and a snippet of it looks this way.
 
@@ -62,8 +88,8 @@ spark.stop()
     60129542154	9296.99	Clinic	23	Inpatient	Low	A001	4070.18	4	Yes
 
 
-
-
+<br>
+## SCRIPT 2
 #### SCRIPT FOR APPLYING RULES-BASED ALGORITHM (also uploaded to the repo section as python file)
 
 ```
