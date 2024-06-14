@@ -3,7 +3,8 @@
 ## SCRIPT 1
 #### This was the Script to generate our synthetic dataset called 'generator_for_parser_script.py'.
 
-![HIGH-LEVEL DIAGRAM BON](https://github.com/BonUzo29/Rules-Based-Algorithm-Insurance/assets/131703145/99eed556-1eaf-489c-bc39-c0884c02bca9)
+![CREATING THE DATA](https://github.com/BonUzo29/Rules-Based-Algorithm-Insurance/assets/131703145/9480a67d-cdfc-4a41-9301-df7ee496546d)
+
 
 <b>DIAGRAM EXPLANATION:</b>
 
@@ -130,6 +131,67 @@ spark.stop()
 
 ## SCRIPT 2
 #### SCRIPT FOR APPLYING RULES-BASED ALGORITHM (also uploaded to the repo section as python file)
+
+![RULES-BASED ASSIGNER SCRIPT](https://github.com/BonUzo29/Rules-Based-Algorithm-Insurance/assets/131703145/412fa356-808e-4beb-9971-4fc1dcd10f5b)
+Above: Rules-based assigner highlevel diagram showing architecture of Script 2.
+
+
+Below: Simple tree diagram depicting the levels of rules used to generate labels in Script 2:
+
+```
+                      ┌───────────────────────┐
+                      │       Input Data      │
+                      └───────────────────────┘
+                                  │
+                  ┌───────────────┴───────────────┐
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │      Rule 1: Claim         │     │      Rule 2: Provider │
+    │      Amount Check          │     │      Type Check       │
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Rule 1.1: > Approved Amt   │     │ Rule 2.1: Is Hospital │
+    │ - Fraudulent               │     │ - Suspicious          │
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Rule 1.2: ≤ Approved Amt   │     │ Rule 2.2: Not Hospital│
+    │ - Further Checks           │     │ - Further Checks      │
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Rule 3: Patient Age Check  │     │ Rule 4: Claim Type   │
+    │ - Age > 100 - Fraudulent   │     │ - Inpatient/Outpatient|
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Rule 5: Procedure Check    │     │ Rule 6: Diagnosis Code│
+    │ - Valid Procedure?         │     │ - Valid Code?         │
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Rule 7: Treatment Cost     │     │ Rule 8: Service       │
+    │ - Cost > Threshold?        │     │ - Duration Check      │
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Rule 9: Out of Network     │     │ Rule 10: Final Check │
+    │ - Yes/No                   │     │ - Assign Label       │
+    └─────────────┬─────────────┘     └──────────┬───────────┘
+                  │                               │
+                  │                               │
+    ┌─────────────▼─────────────┐     ┌──────────▼───────────┐
+    │ Label: Fraudulent          │     │ Label: Legitimate    │
+    │ Label: Suspicious          │     │                      │
+    │ Label: Legitimate          │     │                      │
+    └────────────────────────────┘     └─────────────────────┘
+
+```
+
 
 This script uses PySpark to label healthcare claims data based on predefined rules. It starts a Spark session, reads the generated healthcare claims data from input_data.csv, defines rules as Python functions (e.g., identifying high claim amounts as fraudulent, flagging certain provider types and claim types as suspicious or legitimate), converts these rules into User Defined Functions (UDFs), applies these UDFs to the data to create labels (Label1, Label2, and Final_Label), selects relevant columns for the final output, writes the labeled data to a new CSV file (labeled_data.csv), and stops the Spark session.
 
