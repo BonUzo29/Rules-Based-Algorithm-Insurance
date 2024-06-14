@@ -3,6 +3,9 @@
 ## SCRIPT 1
 #### This was the Script to generate our synthetic dataset called 'generator_for_parser_script.py'.
 
+![HIGH-LEVEL DIAGRAM BON](https://github.com/BonUzo29/Rules-Based-Algorithm-Insurance/assets/131703145/99eed556-1eaf-489c-bc39-c0884c02bca9)
+
+
 This script uses PySpark to generate synthetic healthcare claims data. It initializes a Spark session, generates random values for various columns (such as claim amount, provider type, patient age, claim type, etc.), assigns a unique identifier to each row, writes the generated data to a CSV file (input_data.csv), and then stops the Spark session.
 
 <b>Purpose:</b> This script generates synthetic healthcare claims data using PySpark.
