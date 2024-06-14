@@ -1,6 +1,6 @@
 # Rules-Based-Algorithm-Insurance
 
-#### Script to generate our synthetic dataset
+#### This was the Script to generate our synthetic dataset called 'generator_for_parser_script.py'
 
 
 ```
