@@ -1,0 +1,6 @@
+Counts and Percentages of Labels:
+
+Suspicious: 425190 (42.52%)
+Fraudulent: 500050 (50.01%)
+Legitimate: 74760 (7.48%)
+
