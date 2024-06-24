@@ -45,6 +45,9 @@ final_data = data_labeled.select('id', 'claim_amount', 'provider_type', 'patient
                                  'procedure_complexity', 'diagnosis_code', 'treatment_cost', 
                                  'service_duration', 'out_of_network', 'Final_Label')
 
+# Coalesce to a single partition to write a single CSV file
+final_data = final_data.coalesce(1)
+
 # Write labeled data to CSV
 final_data.write.csv(output_file, header=True, mode='overwrite')
 
